@@ -43,7 +43,9 @@ See `k8s/`. Apply selectively:
 ```bash
 kubectl apply -f k8s/postgres.yaml
 kubectl apply -f k8s/kafka.yaml
-kubectl apply -f k8s/ml-service.yaml
+kubectl apply -f k8s/ml-service.yaml<img width="941" height="832" alt="Screenshot 2025-09-16 at 6 02 44 PM" src="https://github.com/user-attachments/assets/e001da7d-f60a-4b23-b910-c9c42bd2dea5" />
+<img width="929" height="826" alt="Screenshot 2025-09-16 at 6 02 22 PM" src="https://github.com/user-attachments/assets/16709703-55c3-4bd9-a41c-bb610747f41d" />
+
 kubectl apply -f k8s/rca-service.yaml
 kubectl apply -f k8s/log-service.yaml
 kubectl apply -f k8s/suggestion-service.yaml
