@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: rca-service }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: rca } }
+  template:
+    metadata: { labels: { app: rca } }
+    spec:
+      containers:
+        - name: rca
+          image: rca-service:latest
+          imagePullPolicy: Never
+          env:
+            - { name: ML_SERVICE_URL, value: "http://ml-service:8000" }
+            - { name: SPRING_DATASOURCE_URL, value: "jdbc:postgresql://postgres:5432/rca" }
+            - { name: SPRING_DATASOURCE_USERNAME, value: "rcauser" }
+            - { name: SPRING_DATASOURCE_PASSWORD, value: "rcapass" }
+            - { name: SPRING_JPA_HIBERNATE_DDL_AUTO, value: "update" }
+          ports: [{ containerPort: 8080 }]
+---
+apiVersion: v1
+kind: Service
+metadata: { name: rca-service }
+spec:
+  selector: { app: rca }
+  ports: [{ port: 8080, targetPort: 8080 }]

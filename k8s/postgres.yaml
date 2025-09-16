@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata: { name: postgres }
+spec:
+  containers:
+    - name: postgres
+      image: postgres:16-alpine
+      env:
+        - { name: POSTGRES_DB, value: rca }
+        - { name: POSTGRES_USER, value: rcauser }
+        - { name: POSTGRES_PASSWORD, value: rcapass }
+      ports:
+        - containerPort: 5432
